@@ -91,6 +91,12 @@ All settings are at the very top of `xdc-behind-cgnat.sh`:
 
 ---
 
+## 🔌 RPC Behind CGNAT (Coming Soon)
+
+**Development in progress** — Full RPC support for XDC nodes running behind CGNAT is currently being developed and is scheduled for a future release once ready.
+
+---
+
 ## 🔧 Systemd Service Installation (Manual)
 
 If you prefer not to use `install-service.sh`, run these commands once:
