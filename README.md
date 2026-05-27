@@ -1,4 +1,4 @@
-Project in still under construction. Not working yet. Released under MIT license. Feel free to build or improve further.
+Project in Alpha. Released under MIT license. Feel free to build or improve further.
 
 # XDC_Node_Behind_CGNAT
 
