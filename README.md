@@ -51,13 +51,16 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
    ```
 
 3. Add your user to the docker group (recommended, so no sudo is needed):
-   ```bach
+   ```bash
    sudo usermod -aG docker $USER
    ```
    Then reboot your machine.
 
 
 4. Edit the configurable variables at the top of `xdc-behind-cgnat.sh` (especially `CONTAINER_NAME` and `NTFY_TOPIC`).
+   ```bash
+   sudo nano xdc-behind-cgnat.sh
+   ```
 
 5. Install the systemd service (one-time setup):
    ```bash
