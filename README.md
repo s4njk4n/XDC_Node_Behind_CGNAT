@@ -42,7 +42,7 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
 1. Clone the repository:
    ```bash
    git clone https://github.com/s4njk4n/XDC_Node_Behind_CGNAT.git
-   cd XDC_Node_Behind_CGNAT
+   cd ~/XDC_Node_Behind_CGNAT
    ```
 
 2. Make scripts executable:
@@ -59,6 +59,7 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
 
 4. Edit the configurable variables at the top of `xdc-behind-cgnat.sh` (especially `CONTAINER_NAME` and `NTFY_TOPIC`).
    ```bash
+   cd ~/XDC_Node_Behind_CGNAT
    sudo nano xdc-behind-cgnat.sh
    ```
 
