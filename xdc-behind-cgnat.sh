@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# =============================================
-# xdc-behind-cgnat.sh - XDC Docker Peer Monitor
-# =============================================
+# ===========================================================
+# xdc-behind-cgnat.sh - XDC Docker Peer Monitor - by @s4njk4n
+# ===========================================================
 
 # ================== CONFIGURABLE VARIABLES ==================
 THRESHOLD=15                    # Run peer.sh if peers drop below this
@@ -15,15 +15,30 @@ CONTAINER_NAME="xdcnetwork-mainnet-node"      # ←←← Run `docker ps` and pu
 BINARY_NAME="XDC"                             # Usually "XDC" (uppercase) in official XinFin images
 IPC_PATH="/work/xdcchain/XDC.ipc"             # Standard IPC socket path in XDC Docker containers
 
-PEER_SCRIPT_PATH="./peer.sh"                  # Path to your existing peer.sh
+PEER_SCRIPT_PATH="$HOME/XinFin-Node/mainnet/peer.sh"                  # Path to your existing peer.sh
 PAUSE_FLAG="/tmp/xdc-cgnat-paused.flag"
-LOG_FILE="$HOME/xdc-cgnat-monitor.log"
 # ===========================================================
 
+# ================== LOG SETTINGS ==================
+# Log file stored in same folder as the scripts
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LOG_FILE="$SCRIPT_DIR/xdc-cgnat-monitor.log"
+MAX_LOG_SIZE=1048576   # 1MB in bytes
+
+# Create log directory (just in case)
 mkdir -p "$(dirname "$LOG_FILE")"
+# =================================================
 
 log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" | tee -a "$LOG_FILE"
+  
+  # Auto-trim log if it exceeds 1MB (keeps newest lines)
+  if [ -f "$LOG_FILE" ] && [ "$(stat -c %s "$LOG_FILE" 2>/dev/null || stat -f %z "$LOG_FILE" 2>/dev/null || echo 0)" -gt "$MAX_LOG_SIZE" ]; then
+    # Keep the last ~900KB (safe buffer) and add a trim message
+    tail -c 900000 "$LOG_FILE" > "$LOG_FILE.tmp"
+    mv "$LOG_FILE.tmp" "$LOG_FILE"
+    echo "$(date '+%Y-%m-%d %H:%M:%S') - Log trimmed (exceeded 1MB) - keeping newest entries" | tee -a "$LOG_FILE"
+  fi
 }
 
 get_peer_count() {
@@ -72,9 +87,12 @@ while true; do
   if [ "$PEERS" -lt "$THRESHOLD" ]; then
     log "Peer count ($PEERS) is below threshold ($THRESHOLD). Running peer.sh + sending alert..."
 
-    # Run your existing peer.sh
+    # Run peer.sh from its own directory
     if [ -f "$PEER_SCRIPT_PATH" ] && [ -x "$PEER_SCRIPT_PATH" ]; then
-      bash "$PEER_SCRIPT_PATH" >> "$LOG_FILE" 2>&1
+      PEER_DIR="$(dirname "$PEER_SCRIPT_PATH")"
+      PEER_NAME="$(basename "$PEER_SCRIPT_PATH")"
+      
+      (cd "$PEER_DIR" && bash "$PEER_NAME") >> "$LOG_FILE" 2>&1
       log "peer.sh execution finished."
     else
       log "ERROR: peer.sh not found or not executable at $PEER_SCRIPT_PATH"
