@@ -34,6 +34,7 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
 - `xdc-behind-cgnat.sh` → Main monitoring daemon
 - `xdc-behind-cgnat-pause.sh` → Pause the monitor
 - `xdc-behind-cgnat-restart.sh` → Resume the monitor
+- `install-service.sh` → Sets it up to autorestart on reboot
 
 ---
 
