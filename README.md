@@ -77,7 +77,7 @@ All settings are at the very top of `xdc-behind-cgnat.sh`:
 | `FRIENDLY_NAME`         | Name shown in ntfy.sh alerts                     | "My XDC Node"    |
 | `NTFY_TOPIC`            | Your ntfy.sh channel/topic                       | your-ntfy-topic  |
 | `CONTAINER_NAME`        | Exact name from `docker ps`                      | "xinfinnetwork"  |
-| `BINARY_NAME`           | Usually `XDC` (or `geth`)                        | "XDC"            |
+| `BINARY_NAME`           | Usually `XDC`                                    | "XDC"            |
 
 
 ---
