@@ -41,7 +41,7 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOURUSERNAME/XDC_Node_Behind_CGNAT.git
+   git clone https://github.com/s4njk4n/XDC_Node_Behind_CGNAT.git
    cd XDC_Node_Behind_CGNAT
    ```
 
