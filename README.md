@@ -24,7 +24,7 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
 - ✅ Beautiful ntfy.sh alerts with priority tags and emojis
 - ✅ Simple pause / restart helper scripts
 - ✅ Systemd service for automatic startup on boot
-- ✅ Clean logging to `~/xdc-cgnat-monitor.log`
+- ✅ Clean logging
 - ✅ Zero RPC dependency — works directly with your running XDC Docker container
 
 ---
