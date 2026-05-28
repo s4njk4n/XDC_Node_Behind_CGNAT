@@ -75,14 +75,14 @@ Perfect for home, lab, or VPS XDC node operators who struggle with low peer coun
 
 All settings are at the very top of `xdc-behind-cgnat.sh`:
 
-| Variable                | Description                                      | Default          |
-|-------------------------|--------------------------------------------------|------------------|
-| `THRESHOLD`             | Minimum peers before running `peer.sh`           | 15               |
-| `CHECK_INTERVAL_MINUTES`| How often to check the node                      | 60               |
-| `FRIENDLY_NAME`         | Name shown in ntfy.sh alerts                     | "My XDC Node"    |
-| `NTFY_TOPIC`            | Your ntfy.sh channel/topic                       | your-ntfy-topic  |
-| `CONTAINER_NAME`        | Exact name from `docker ps`                      | "xinfinnetwork"  |
-| `BINARY_NAME`           | Usually `XDC`                                    | "XDC"            |
+| Variable                | Description                                      | Default                    |
+|-------------------------|--------------------------------------------------|----------------------------|
+| `THRESHOLD`             | Minimum peers before running `peer.sh`           | 15                         |
+| `CHECK_INTERVAL_MINUTES`| How often to check the node                      | 60                         |
+| `FRIENDLY_NAME`         | Name shown in ntfy.sh alerts                     | "My XDC Node"              |
+| `NTFY_TOPIC`            | Your ntfy.sh channel/topic                       | your-ntfy-topic            |
+| `CONTAINER_NAME`        | Exact name from `docker ps`                      | "xdcnetwork-mainnet-node"  |
+| `BINARY_NAME`           | Usually `XDC`                                    | "XDC"                      |
 
 
 ---
