@@ -1,6 +1,6 @@
 Project in Alpha. Released under MIT license. Feel free to build or improve further.
 
-# XDC_Node_Behind_CGNAT
+# XDC Node Behind CGNAT / Peer Auto-Maintenance
 
 ![XDC Node Behind CGNAT](image.jpg)
 
